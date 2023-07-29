@@ -10,7 +10,9 @@ public class Rec0_PrintHelloNTimes {
         if (n == 0) {
             return;
         }
-        System.out.println("Hello "+n);
+
         printHello(n-1);
+
+        System.out.println("Hello "+n);
     }
 }
