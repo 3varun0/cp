@@ -3,7 +3,7 @@ package com.vk.dsa.topic_recursion;
 /**
  * This recursion problem is to sum all numbers from 1 to n.
  */
-public class Rec2_SumNum {
+public class Rec1_SumNum {
 
     public static void main(String[] args) {
         int n = 100;

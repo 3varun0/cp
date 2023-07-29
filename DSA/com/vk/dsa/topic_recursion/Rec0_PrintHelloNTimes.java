@@ -1,6 +1,6 @@
 package com.vk.dsa.topic_recursion;
 
-public class Rec1_PrintHelloNTimes {
+public class Rec0_PrintHelloNTimes {
 
     public static void main(String[] args) {
         printHello(10);
