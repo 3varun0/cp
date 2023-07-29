@@ -111,55 +111,6 @@ class MySingleLinkedList {
 
         }
 
-        public void insertFirst(int data) {
-
-        }
-
-        public void printList() {
-
-        }
-        public void insertLast(int data) {
-
-        }
-
-        public void insertAfter(int afterThis, int data) {
-
-        }
-
-        public void insertBefore(int beforeThis, int data) {
-
-        }
-
-        public void deleteLast () {
-
-        }
-
-        public void deleteAfter(int data) {
-
-        }
-
-        public void deleteNode (int data) {
-
-        }
-        public void detectLoop () {
-
-        }
-
-        public ListNode findIntersectionNode() {
-
-
-            return null;
-        }
-
-        public boolean isListEvenLength() {
-
-            return false;
-        }
-
-        public ListNode deleteStart () {
-
-        }
-
 
     public static void main(String[] args) {
         MySingleLinkedList ll = new MySingleLinkedList();
