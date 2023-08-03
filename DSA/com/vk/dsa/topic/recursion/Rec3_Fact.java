@@ -1,4 +1,4 @@
-package com.vk.dsa.topic_recursion;
+package com.vk.dsa.topic.recursion;
 
 /**
  * This problem is to find the factorial via recursion.

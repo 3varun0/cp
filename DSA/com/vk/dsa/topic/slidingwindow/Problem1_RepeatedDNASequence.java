@@ -1,4 +1,4 @@
-package com.vk.dsa.topic_slidingwindow;
+package com.vk.dsa.topic.slidingwindow;
 
 import java.util.*;
 

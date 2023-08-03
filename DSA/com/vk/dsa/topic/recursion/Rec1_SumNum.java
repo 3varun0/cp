@@ -1,4 +1,4 @@
-package com.vk.dsa.topic_recursion;
+package com.vk.dsa.topic.recursion;
 
 /**
  * This recursion problem is to sum all numbers from 1 to n.

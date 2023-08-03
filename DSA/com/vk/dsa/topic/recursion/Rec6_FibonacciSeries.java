@@ -1,4 +1,4 @@
-package com.vk.dsa.topic_recursion;
+package com.vk.dsa.topic.recursion;
 
 /**
  * This program is to find the fiboncci series for the the given term via recursion.

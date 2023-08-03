@@ -1,4 +1,4 @@
-package com.vk.dsa.topic_recursion;
+package com.vk.dsa.topic.recursion;
 
 public class Rec0_PrintHelloNTimes {
 
