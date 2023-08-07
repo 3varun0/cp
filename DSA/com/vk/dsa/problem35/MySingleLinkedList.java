@@ -27,6 +27,21 @@ class MySingleLinkedList {
         head = null;
     }
 
+    public void addAtTail(int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+
+        ListNode cur = head;
+        while (cur.next != null) {
+            cur = cur.next;
+        }
+        cur.next = newNode;
+    }
+
+
 
     /**
      * Problem 35
@@ -48,6 +63,13 @@ class MySingleLinkedList {
 
     public static void main(String[] args) {
         MySingleLinkedList ll = new MySingleLinkedList();
+        ll.addAtTail(10);
+        ll.addAtTail(20);
+        ll.addAtTail(30);
+        ll.addAtTail(40);
+        //ll.addAtTail(50);
+
+        System.out.println(ll.isLinkedListEven());
 
     }
 }
