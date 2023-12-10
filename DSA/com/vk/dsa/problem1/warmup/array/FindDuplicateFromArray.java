@@ -13,6 +13,7 @@ public class FindDuplicateFromArray {
         int [] arr = {1,2,5,6,3,4,3,7,8,9};
         int n = 9;
         int sumOfN = n * ((n+1)/2);
+        int x = 10;
         int sumOfArr = 0;
         for (int i : arr) {
             sumOfArr += i;
