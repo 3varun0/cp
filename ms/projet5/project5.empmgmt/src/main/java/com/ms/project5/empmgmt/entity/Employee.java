@@ -6,23 +6,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employee", schema = "demodb")
 public class Employee {
 
     @Id
-    Integer empId;
-    @Column(name = "empName")
-    String empName;
-    @Column(name = "empDesig")
-    String empDesig;
-    @Column(name = "empSal")
-    Float empSal;
+    @Column(name = "emp_id")
+    private Long empId;
+    @Column(name = "emp_name")
+    private String empName;
+    @Column(name = "emp_desig")
+    private String empDesig;
+    @Column(name = "emp_sal")
+    private Float empSal;
 
-    public Integer getEmpId() {
+    public Long getEmpId() {
         return empId;
     }
 
-    public void setEmpId(Integer empId) {
+    public void setEmpId(Long empId) {
         this.empId = empId;
     }
 

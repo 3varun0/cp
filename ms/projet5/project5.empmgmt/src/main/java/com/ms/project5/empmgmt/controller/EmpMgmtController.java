@@ -1,29 +1,28 @@
 package com.ms.project5.empmgmt.controller;
 
 import com.ms.project5.empmgmt.entity.Employee;
+import com.ms.project5.empmgmt.error.EmployeeNotFoundException;
 import com.ms.project5.empmgmt.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("employee")
 public class EmpMgmtController {
 
     @Autowired
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
-    @GetMapping
+    @GetMapping("alle")
     public List<Employee> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
-    @GetMapping("{/id}")
-    public Employee findEmployeeById() {
-        return employeeService.findEmployeeById();
-    }
+
+    /*@GetMapping()
+    public Employee getEmployeeById(@PathVariable Long empId) throws EmployeeNotFoundException {
+        return employeeService.getEmployeeById(empId);
+    }*/
 
 }
