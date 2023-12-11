@@ -1,0 +1,71 @@
+/*
+Find the incurring minimum cost to reach from
+(0,0) to (x,y)
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int n, m;
+int arr[1001][1001];
+bool done[1001][1001];
+int dp [1001][1001];
+
+int rec(int x, int y) {//min cost to reach (x,y) from (0,0)
+    //pruning
+    if (x<0 || x>n || y<0 || y>m) return 1e9;
+    
+    //base case
+    if(x==0 && y==0) {
+        return arr[0][0];
+    }
+    
+    //cache check
+    if (done[x][y]) return dp[x][y];
+    
+    //transition
+    int ans = min(rec(x-1,y), rec(x,y-1))+ arr[x][y];
+    
+    //save and return
+    dp[x][y] = ans;
+    done[x][y] = true;
+    return ans;
+}
+
+void solve () {
+    cin>>n>>m;
+    for (int i=0; i<=n; i++) {
+        for (int j=0; j<=m; j++) {
+            cin>>arr[i][j];
+        }
+    }
+    
+    //clearing the dp table 
+    for (int i=0; i<=n; i++) {
+        for (int j=0; j<=m; j++) {
+            done[i][j] = false;
+        }
+    }
+    cout<<rec(n,m)<<endl;
+}
+
+int main()
+{
+    int t;
+    cin>>t;
+    while (t--) {
+        solve();
+    }
+    
+    return 0;
+}
+
+---input
+1
+3 3
+0 100 2 3
+2 1000 1000 1
+1 1000 1000 3
+100 100 100 0
+---output
+109

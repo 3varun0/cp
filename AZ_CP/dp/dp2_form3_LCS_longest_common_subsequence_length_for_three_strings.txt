@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+String a,b,c;
+int n,m,o;
+int dp[1001][1001][1001];
+
+int rec(int i, int j, int k) {//return the length of LCS of a[i...n-1] and b[j...m-1] and c[k...o-1]
+	//pruning
+	//na
+	
+	//base case
+	if (i>=n || j>=m || k>=o) return 0;
+	
+	//cache check
+	if (dp[i][j][k] != -1) return dp[i][j][k];
+	
+	//transition compute
+	int ans = 0;
+	ans = max(ans, rec(i+1, j,k));
+	ans = max(ans, rec(i, j+1,k));
+	ans = max(ans, rec(i, j, k+1));
+	if (a[i] == b[j] && b[j] == c[k]) {
+		ans = max(ans, 1+rec(i+1, j+1, k+1));
+	}
+	
+	return dp[i][j][k] = ans;
+}
+
+void solve () {
+	cin>>n>>m>>o;
+	cin>>a>>b>>c;
+	
+	memset(dp, -1, sizeof(dp));
+	cout<<rec(0, 0, 0)<<endl;
+}
+
+int main () {
+	solve();
+	return 0;
+}

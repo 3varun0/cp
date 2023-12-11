@@ -1,0 +1,46 @@
+//graph cycle detection
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int n, m;
+vector<vector<int>> g;
+vector<int> vis;
+bool isCyclePresent = false;
+
+void dfs(int node, int parent) {
+    vis[node] = 1;
+    for (auto v: g[node]) {
+        if (!vis[v]) {
+            dfs(v, node);
+        } else if (v != parent){
+            isCyclePresent = 1;
+        }
+    }
+}
+
+int main () {
+    cin>>n>>m;
+    g.resize(n+1);
+    
+    for (int i=0; i<m; i++) {
+        int a, b;
+        cin>>a>>b;
+        g[a].push_back(b);
+        //if graph is undirected, the connect vice-versa also
+        g[b].push_back(a);
+    }
+    
+    vis.resize(n+1, 0);
+    for (int i=1; i<=n; i++) {
+        if (!vis[i]) {
+            dfs(i, 0);
+        }
+    }
+    //printing output
+    cout<<"IsCyclePresent: "<<isCyclePresent<<endl;
+    for (int i=1; i<=n; i++) {
+        cout<<i<<" : "<<vis[i]<<endl;
+    }
+    return 0;
+}

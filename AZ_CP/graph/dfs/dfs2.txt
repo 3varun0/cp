@@ -1,0 +1,95 @@
+//basic graph dfs 
+/**
+Problem1 : given a graph, 
+->find the # components in the graph.
+->size of each components
+->set of nodes of each components
+->Q queries ? X, Y, find if X & Y are in CC.
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int n, m;
+vector<vector<int>> g;
+vector<int> vis;
+
+void dfs(int node, int nums_comp) {
+    vis[node] = nums_comp;
+    for (auto v: g[node]) {
+        if (!vis[v]) {
+            dfs(v, nums_comp);
+        }
+    }
+}
+
+int main () {
+    cin>>n>>m;
+    g.resize(n+1);
+    
+    for (int i=0; i<m; i++) {
+        int a, b;
+        cin>>a>>b;
+        g[a].push_back(b);
+        //if graph is undirected, the connect vice-versa also
+        g[b].push_back(a);
+    }
+    
+    vis.resize(n+1, 0);
+    
+    //dfs(1); //exploring all graph
+    int nums_comp = 0;
+    for (int i=1; i<=n; i++) {
+        if (!vis[i]) {
+            nums_comp++;
+            dfs(i, nums_comp);
+        }
+    }
+    //printing output
+    for(int i=1; i<=n; i++) {
+        cout<<i<<" : "<<vis[i]<<endl;
+    }
+    
+    vector<vector<int>> components;
+    components.resize(nums_comp+1);
+    
+    for (int i=1; i<=n; i++) {
+        //cout<<i<<": "<<vis[i]<<endl;
+        components[vis[i]].push_back(i);
+    }
+    cout<<"Queries :"<<endl;
+    cout<<"total components: "<<nums_comp<<endl;
+    for (int i=1; i<=nums_comp; i++) {
+        cout<<"size of components "<<i<<" : "<<components[i].size()<<" and component values are : ";
+        for (auto v:components[i]) {
+            cout<<v<<" ";
+        }
+        cout<<endl;
+    }
+    
+    return 0;
+}
+--------input
+9 7
+1 2
+2 8
+8 4
+1 4
+3 9
+5 6
+6 7
+------output
+
+1 : 1
+2 : 1
+3 : 2
+4 : 1
+5 : 3
+6 : 3
+7 : 3
+8 : 1
+9 : 2
+Queries :
+total components: 3
+size of components 1 : 4 and component values are : 1 2 4 8 
+size of components 2 : 2 and component values are : 3 9 
+size of components 3 : 3 and component values are : 5 6 7 
