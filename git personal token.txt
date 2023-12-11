@@ -1,3 +1,0 @@
-github personal access token : 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 
-(90 days validity)
-all scopes selected
