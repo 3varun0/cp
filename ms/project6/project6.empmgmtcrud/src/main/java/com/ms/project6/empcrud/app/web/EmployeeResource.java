@@ -75,4 +75,32 @@ public class EmployeeResource {
         return new ResponseEntity<>(o, HttpStatus.OK);
     }
 
+    @GetMapping("/name/{empName}")
+    public ResponseEntity<List<Employee>> findByEmpName(@PathVariable String empName) {
+        return employeeService.findByEmpName(empName);
+    }
+
+    @GetMapping("/sal/{empSal}")
+    public ResponseEntity<List<Employee>> findByEmpSal (@PathVariable Float empSal) {
+        return employeeService.findByEmpSal(empSal);
+    }
+
+    //JPQL ex 1
+    @GetMapping("/findByNameAndRole/{name}/{role}")
+    public ResponseEntity<List<Employee>> findByNameAndRole(@PathVariable String name, @PathVariable String role) {
+        return employeeService.findByNameAndRole(name, role);
+    }
+
+    //JPQL ex 2
+    @GetMapping("/bySal/{sal}")
+    public ResponseEntity<List<Employee>> findBySalAbove(@PathVariable Float sal) {
+        return employeeService.findBySalAbove(sal);
+    }
+
+    //JPQL ex 3 for native query of SQL
+    @GetMapping("/namestartswith/{ini}")
+    public ResponseEntity<List<Employee>> findByNameStartsWith(@PathVariable String ini) {
+        return employeeService.findByNameStartsWith(ini);
+    }
+
 }
