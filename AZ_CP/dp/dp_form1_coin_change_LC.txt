@@ -1,0 +1,57 @@
+class Solution {
+    int [][] dp;
+    boolean [][] done;
+    int n;
+    int [] coins;
+    int amount;
+    int min = Integer.MAX_VALUE;
+
+    public int coinChange(int[] coins, int amount) {
+
+        this.coins = coins;
+        this.amount = amount;
+
+        n = coins.length;
+        dp = new int [n+1][amount+1];//for caching
+        done = new boolean [n+1][amount+1];//for mainting visited elements
+
+        for (int i=0; i<=n; i++) {//initializing done array with false
+            for (int j=0; j<=amount; j++) {
+                done[i][j] = false;
+            }
+        }
+        int ans = rec (0, amount);//this is dp function invoked by passing states
+        return ans >= 100000 ? -1 : ans;
+    }
+
+    public int rec (int i, int x) {        
+        //1 pruning
+        //NA
+        
+        //2 base case
+        if (x == 0) return 0;
+        if (i == n) return 100000;
+        
+        //3 cache check
+        if (done[i][x]) return dp[i][x];
+
+        //4 recursive case
+        int t = 100000;
+        if (coins[i] <= x) {
+            t = rec(i, x-coins[i]);
+        }
+        int nt = rec(i+1, x);
+        int ans = Math.min(t+1, nt);
+
+        //5 save and return
+        dp[i][x] = ans;//caching actual ans
+        done[i][x] = true;
+        return ans;
+    }
+}
+
+/*
+Input: coins = [1,2,5], amount = 11
+Output: 3
+Explanation: 11 = 5 + 5 + 1
+*/
