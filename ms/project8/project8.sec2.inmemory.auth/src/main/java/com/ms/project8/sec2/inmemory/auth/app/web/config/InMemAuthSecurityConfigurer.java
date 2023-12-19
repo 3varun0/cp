@@ -14,9 +14,9 @@ public class InMemAuthSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //super.configure(auth);
         auth.inMemoryAuthentication()
-                .withUser("Varun").password("1111").roles("USER")
+                .withUser("Varun").password("{noop}1111").roles("USER")
                 .and()
-                .withUser("Mahesh").password("2222").roles("ADMIN");
+                .withUser("Mahesh").password("{noop}2222").roles("ADMIN");
     }
 
     @Override

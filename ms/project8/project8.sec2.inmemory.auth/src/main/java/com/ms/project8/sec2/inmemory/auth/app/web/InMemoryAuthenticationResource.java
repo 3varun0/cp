@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/inmemusers")
 public class InMemoryAuthenticationResource {
 
-    @GetMapping
+    @GetMapping("msg")
     public String secMessage() {
-        return "<H1> This is security message with in memory authentication setup.";
+        return "<H1> This is security message with in memory authentication setup.<H1>";
     }
+    
 }
